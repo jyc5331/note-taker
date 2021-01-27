@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 8000;
+const PORT = process.env.PORT || 3001;
 const htmlRoutes = require("./routes/htmlRoutes");
 
 app.use(express.urlencoded({ extended: true }));
@@ -9,6 +9,6 @@ app.use(express.static("public"));
 
 app.use("/", htmlRoutes);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });
