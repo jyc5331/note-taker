@@ -20,19 +20,23 @@ const show = (elem) => {
   } else {
     elem.style.display = "inline";
   }
+  elem.addEventListener("click", saveNote);
 };
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-const getNotes = () =>
-  fetch("/api/notes", {
+const getNotes = () => {
+  console.log("getNotes is running");
+  return fetch("/api/notes", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
+};
 
+//JCsave note function, this will run with accessNotes from lib/notes.js
 const saveNote = (note) =>
   fetch("/api/notes", {
     method: "POST",
@@ -51,7 +55,7 @@ const deleteNote = (id) =>
   });
 
 const renderActiveNote = () => {
-  hide(saveNoteBtn);
+  show(saveNoteBtn);
 
   if (activeNote.id) {
     noteTitle.setAttribute("readonly", true);
@@ -108,7 +112,7 @@ const handleNewNoteView = (e) => {
 
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
-    hide(saveNoteBtn);
+    show(saveNoteBtn);
   } else {
     show(saveNoteBtn);
   }
