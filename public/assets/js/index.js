@@ -36,7 +36,6 @@ const getNotes = () => {
   });
 };
 
-//JCsave note function, this will run with accessNotes from lib/notes.js
 const saveNote = (note) =>
   fetch("/api/notes", {
     method: "POST",
@@ -105,7 +104,7 @@ const handleNoteView = (e) => {
   renderActiveNote();
 };
 
-// Sets the activeNote to and empty object and allows the user to enter a new note
+// Sets the activeNote to an empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
